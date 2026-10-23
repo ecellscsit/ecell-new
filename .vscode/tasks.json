@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "1. Install everything", "type": "shell", "command": "npm run install:all", "problemMatcher": [] },
+    { "label": "2. Create admin account", "type": "shell", "command": "npm run seed", "problemMatcher": [] },
+    { "label": "3. Add demo content", "type": "shell", "command": "npm run seed:demo", "problemMatcher": [] },
+    { "label": "▶ Start website (server + client)", "type": "shell", "command": "npm run dev", "isBackground": true, "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true } }
+  ]
+}

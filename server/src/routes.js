@@ -1,0 +1,33 @@
+// One line per module. Each module owns its model, controller and routes.
+import { Router } from 'express';
+import auth from './modules/auth/auth.routes.js';
+import users from './modules/users/users.routes.js';
+import events from './modules/events/events.routes.js';
+import registrations from './modules/registrations/registrations.routes.js';
+import blog from './modules/blog/blog.routes.js';
+import team from './modules/team/team.routes.js';
+import startups from './modules/startups/startups.routes.js';
+import gallery from './modules/gallery/gallery.routes.js';
+import notifications from './modules/notifications/notifications.routes.js';
+import initiatives from './modules/initiatives/initiatives.routes.js';
+import contact from './modules/contact/contact.routes.js';
+import settings from './modules/settings/settings.routes.js';
+import home from './modules/home/home.routes.js';
+import upload from './modules/upload/upload.routes.js';
+
+const r = Router();
+r.use('/auth', auth);
+r.use('/users', users);
+r.use('/events', events);
+r.use('/registrations', registrations);
+r.use('/blog', blog);
+r.use('/team', team);
+r.use('/startups', startups);
+r.use('/gallery', gallery);
+r.use('/notifications', notifications);
+r.use('/initiatives', initiatives);
+r.use('/contact', contact);
+r.use('/settings', settings);
+r.use('/home', home);
+r.use('/upload', upload);
+export default r;
