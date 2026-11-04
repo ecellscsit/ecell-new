@@ -42,7 +42,7 @@ export const register = asyncH(async (req, res) => {
     prefs: { events: subscribe, blogs: subscribe, announcements: subscribe },
   });
   if (!autoVerify)
-    await sendEmail({
+    sendEmail({
       to: email,
       subject: "Verify your E-Cell SCSIT account",
       html: `<p>Hi ${name}, confirm your email: <a href="${CLIENT()}/verify/${verifyToken}">Verify now</a></p>`,
