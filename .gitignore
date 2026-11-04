@@ -1,5 +1,7 @@
 node_modules
 .env
 dist
+.env.example
 server/uploads/*
 !server/uploads/.gitkeep
+server/
