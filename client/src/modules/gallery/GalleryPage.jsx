@@ -11,6 +11,7 @@ export default function GalleryPage() {
   const years = [...new Set(photos.map((p) => p.year).filter(Boolean))];
 
   return (
+    
     <>
       <PageHeader title="Gallery" />
       <div className="container section">
