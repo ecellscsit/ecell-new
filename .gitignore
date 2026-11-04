@@ -3,6 +3,3 @@ node_modules
 dist
 server/uploads/*
 !server/uploads/.gitkeep
-.env.example
-server/src/seed.js
-server/src/seedDemo.js
