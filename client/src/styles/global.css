@@ -341,15 +341,6 @@ img {
   .avatar-btn svg {
     font-size: 36px;
   }
-  .bell-panel {
-    position: fixed;
-    top: var(--nav-h);
-    left: 0;
-    right: 0;
-    width: auto;
-    max-height: calc(100vh - var(--nav-h) - 16px);
-    border-radius: 0 0 12px 12px;
-  }
 }
 
 /* ---------- Small phone (<= 420px) ---------- */
@@ -384,17 +375,15 @@ img {
   }
 }
 
-
 /* bell */
 .bell {
   position: relative;
 }
 .bell > button {
+  position: relative;
   background: none;
   border: 0;
-  font-size: 20px;
   cursor: pointer;
-  position: relative;
 }
 .bell-badge {
   position: absolute;
@@ -409,33 +398,50 @@ img {
 .bell-panel {
   position: absolute;
   right: 0;
-  top: 40px;
-  width: 340px;
-  max-height: 420px;
-  overflow: auto;
+  top: calc(100% + 10px);
+  z-index: 70;
+  width: 360px;
+  max-height: 70vh;
+  overflow-y: auto;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
+}
+.bell-panel > p {
+  margin: 0;
+  padding: 18px;
+  text-align: center;
 }
 .bell-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 12px;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #fff;
   border-bottom: 1px solid var(--line);
 }
 .bell-head button {
   background: none;
   border: 0;
   color: var(--brand);
+  font-weight: 600;
   cursor: pointer;
 }
 .bell-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 12px;
+  padding: 12px 14px;
   border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+.bell-item:last-child {
+  border-bottom: 0;
 }
 .bell-item.unread {
   background: #eff6ff;
@@ -449,6 +455,18 @@ img {
   font-size: 12px;
   color: var(--muted);
 }
+
+/* bell: phone par screen ke beech mein khule */
+@media (max-width: 700px) {
+  .bell-panel {
+    position: fixed;
+    top: calc(var(--nav-h) + 8px);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: min(92vw, 380px);
+    max-height: calc(100vh - var(--nav-h) - 24px);
+  }
 }
 
 /* layout helpers */
@@ -1680,44 +1698,3 @@ html {
   color: var(--muted);
 }
 
-/* 7 menu items: switch to the hamburger menu a bit earlier */
-@media (max-width: 1100px) {
-  .nav-links {
-    gap: 16px;
-  }
-  .nav-links a {
-    font-size: 15px;
-  }
-}
-@media (max-width: 1000px) {
-  .burger {
-    display: block;
-  }
-  .nav-cta {
-    display: none;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: var(--nav-h);
-    left: 0;
-    right: 0;
-    background: #fff;
-    flex-direction: column;
-    gap: 4px;
-    padding: 12px 20px 20px;
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
-  }
-  .nav-links.open {
-    display: flex;
-  }
-  .nav-links a {
-    font-size: 18px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-links a::after {
-    display: none;
-  }
-}
