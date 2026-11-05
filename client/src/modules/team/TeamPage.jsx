@@ -5,7 +5,7 @@ import http from '../../api/http.js';
 import Img from '../../components/common/Img.jsx';
 import PageHeader from '../../components/common/PageHeader.jsx';
 
-const LEVELS = { 0: 'Faculty Mentors', 1: 'President & Vice President', 2: 'Heads', 3: 'Team Leads', 4: 'Co-ordinators & Members' };
+const LEVELS = { 0: 'Faculty Mentors', 1: 'President', 2: 'Vice President', 3: 'Heads', 4: 'Team Leads', 5: 'Co-ordinators & Members' };
 
 const Card = ({ m, big }) => (
   <div className={`team-card ${big ? 'big' : ''}`}>
