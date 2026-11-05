@@ -5,7 +5,8 @@ import http from '../../api/http.js';
 import Img from '../../components/common/Img.jsx';
 import PageHeader from '../../components/common/PageHeader.jsx';
 
-const LEVELS = { 0: 'Faculty Mentors', 1: 'President', 2: 'Vice President', 3: 'Heads', 4: 'Team Leads', 5: 'Co-ordinators & Members' };
+// President (level 1) and Vice President (level 2) are shown together under "Leadership"
+const LEVELS = { 0: 'Faculty Mentors', 1: 'Leadership', 3: 'Heads', 4: 'Team Leads', 5: 'Co-ordinators & Members' };
 
 const Card = ({ m, big }) => (
   <div className={`team-card ${big ? 'big' : ''}`}>
@@ -54,7 +55,9 @@ export default function TeamPage() {
         <select value={year} onChange={(e) => setYear(e.target.value)}>{years.map((y) => <option key={y}>{y}</option>)}</select>
 
         {Object.entries(LEVELS).map(([lvl, title]) => {
-          const people = team.filter((m) => m.level === Number(lvl));
+          const people = team
+            .filter((m) => (Number(lvl) === 1 ? m.level === 1 || m.level === 2 : m.level === Number(lvl)))
+            .sort((a, b) => a.level - b.level); // President first, then Vice President
           if (!people.length) return null;
           // Heads / Leads / Members are grouped by department
           const grouped = Number(lvl) >= 3
