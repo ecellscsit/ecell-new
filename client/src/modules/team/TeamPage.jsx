@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import http from '../../api/http.js';
 import Img from '../../components/common/Img.jsx';
 import PageHeader from '../../components/common/PageHeader.jsx';
@@ -6,16 +8,25 @@ import PageHeader from '../../components/common/PageHeader.jsx';
 const LEVELS = { 0: 'Faculty Mentors', 1: 'President', 2: 'Vice President', 3: 'Heads', 4: 'Team Leads', 5: 'Co-ordinators & Members' };
 
 const Card = ({ m, big }) => (
-  <div className={`card person ${big ? 'big' : ''}`}>
-    <Img src={m.photo} alt={m.name} />
-    <div className="card-body">
-      <h4>{m.name}</h4><p>{m.role}</p>
-      {m.department && <small>{m.department}</small>}
-      <div className="socials">
-        {m.linkedin && <a href={m.linkedin} target="_blank" rel="noreferrer">in</a>}
-        {m.instagram && <a href={m.instagram} target="_blank" rel="noreferrer">ig</a>}
+  <div className={`team-card ${big ? 'big' : ''}`}>
+    <Img className="team-photo" src={m.photo} alt={m.name} />
+    <h4>{m.name}</h4>
+    <p className="team-role">{m.role}</p>
+    {m.department && <small className="team-dept">{m.department}</small>}
+    {(m.linkedin || m.instagram) && (
+      <div className="team-socials">
+        {m.linkedin && (
+          <a href={m.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <LinkedInIcon fontSize="small" />
+          </a>
+        )}
+        {m.instagram && (
+          <a href={m.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+            <InstagramIcon fontSize="small" />
+          </a>
+        )}
       </div>
-    </div>
+    )}
   </div>
 );
 
@@ -33,7 +44,12 @@ export default function TeamPage() {
     <>
       <PageHeader title="Our Team" />
       <div className="container section">
-        {founders.length > 0 && (<section><h2>Founders</h2><div className="grid-2">{founders.map((m) => <Card key={m._id} m={m} big />)}</div></section>)}
+        {founders.length > 0 && (
+          <section>
+            <h2>Founders</h2>
+            <div className="team-grid big">{founders.map((m) => <Card key={m._id} m={m} big />)}</div>
+          </section>
+        )}
         <h2>Team of the year</h2>
         <select value={year} onChange={(e) => setYear(e.target.value)}>{years.map((y) => <option key={y}>{y}</option>)}</select>
 
@@ -50,7 +66,9 @@ export default function TeamPage() {
               {grouped.map(([dept, list]) => (
                 <div key={dept}>
                   {dept && <h4 className="dept">{dept}</h4>}
-                  <div className={Number(lvl) <= 2 ? 'grid-2' : 'grid-4'}>{list.map((m) => <Card key={m._id} m={m} big={Number(lvl) <= 2} />)}</div>
+                  <div className={`team-grid ${Number(lvl) <= 2 ? 'big' : ''}`}>
+                    {list.map((m) => <Card key={m._id} m={m} big={Number(lvl) <= 2} />)}
+                  </div>
                 </div>
               ))}
             </section>
