@@ -6,7 +6,7 @@ const memberSchema = new mongoose.Schema({
   photo: String,
   role: String,                       // e.g. "Head of Design"
   department: { type: String, default: '' },
-  level: { type: Number, enum: [0, 1, 2, 3, 4,5], default: 5 },
+  level: { type: Number, enum: [0, 1, 2, 3, 4, 5], default: 5 },
   year: { type: String, required: true },   // e.g. "2026-27"
   courseYear: String,
   quote: String,
