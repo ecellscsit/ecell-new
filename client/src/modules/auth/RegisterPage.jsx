@@ -42,11 +42,7 @@ export default function RegisterPage() {
   if (msg)
     return (
       <AuthCard
-        title={
-          <>
-            <CelebrationIcon /> You're in!
-          </>
-        }
+        title="🎉 You're in!"
         subtitle={msg}
       >
         <Link to='/login' className='btn btn-primary'>
