@@ -77,94 +77,313 @@ img {
   margin: 16px 0;
 }
 
-/* navbar */
+/* =====================================================
+   NAVBAR (fully responsive)
+   Breakpoints: 1200 (laptop) / 1000 (burger) / 700 (phone) / 420 / 340
+   ===================================================== */
 .navbar {
+  --nav-h: 100px;
   position: sticky;
   top: 0;
   z-index: 50;
   background: #fff;
   border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.3s;
+}
+.navbar.scrolled {
+  --nav-h: 72px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+}
+.navbar .container {
+  width: min(1280px, 95%);
 }
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
   gap: 16px;
+  height: var(--nav-h);
+  transition: height 0.3s;
 }
+
+/* brand */
 .brand {
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--brand);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  min-width: 0;
+  line-height: 1.1;
 }
+.nav-logo {
+  height: calc(var(--nav-h) - 20px);
+  width: auto;
+  object-fit: contain;
+  transition: height 0.3s;
+}
+.brand span {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.brand small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* links */
 .nav-links {
   display: flex;
-  gap: 22px;
+  align-items: center;
+  gap: 28px;
+}
+.nav-links a {
+  position: relative;
+  padding: 6px 0;
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 .nav-links a.active {
   color: var(--brand);
   font-weight: 700;
 }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: var(--brand);
+  border-radius: 3px;
+  transition: width 0.25s;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* right side */
 .nav-right {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
+}
+.nav-cta {
+  padding: 12px 24px;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.login-link {
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.bell > button {
+  font-size: 24px;
 }
 .burger {
   display: none;
   background: none;
   border: 0;
-  font-size: 24px;
+  padding: 6px;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ink);
 }
+
+/* profile icon + dropdown */
 .user-menu {
   position: relative;
+}
+.avatar-btn {
+  display: grid;
+  place-items: center;
+  background: none;
+  border: 0;
+  padding: 0;
   cursor: pointer;
-  font-weight: 600;
+  color: var(--brand);
+}
+.avatar-btn svg {
+  font-size: 40px;
 }
 .user-menu .dropdown {
   display: none;
   position: absolute;
   right: 0;
   top: 100%;
+  margin-top: 8px;
+  z-index: 60;
+  width: max-content;
+  min-width: 230px;
+  max-width: calc(100vw - 24px);
+  padding: 6px;
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 8px;
-  min-width: 150px;
-  padding: 6px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
-.user-menu:hover .dropdown {
+.user-menu .dropdown.open {
   display: block;
 }
 .dropdown a,
 .dropdown button {
   display: block;
   width: 100%;
+  padding: 10px 12px;
   text-align: left;
-  padding: 8px;
   background: none;
   border: 0;
+  border-radius: 8px;
   cursor: pointer;
   font: inherit;
 }
-@media (max-width: 800px) {
+.dropdown a:hover,
+.dropdown button:hover {
+  background: var(--soft);
+}
+.dropdown-user {
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+.dropdown-user small {
+  display: block;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+/* ---------- Laptop (<= 1200px) ---------- */
+@media (max-width: 1200px) {
+  .brand small {
+    display: none;
+  }
+  .nav-links {
+    gap: 18px;
+  }
+  .nav-links a {
+    font-size: 16px;
+  }
+  .nav-cta {
+    padding: 10px 18px;
+    font-size: 15px;
+  }
+}
+
+/* ---------- Tablet (<= 1000px): hamburger menu ---------- */
+@media (max-width: 1000px) {
   .burger {
     display: block;
   }
   .nav-links {
     display: none;
     position: absolute;
-    top: 64px;
+    top: 100%;
     left: 0;
     right: 0;
-    background: #fff;
     flex-direction: column;
-    padding: 16px;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 20px 16px;
+    background: #fff;
     border-bottom: 1px solid var(--line);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - var(--nav-h));
+    overflow-y: auto;
   }
   .nav-links.open {
     display: flex;
   }
+  .nav-links a {
+    padding: 14px 0;
+    font-size: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-links a:last-child {
+    border-bottom: 0;
+  }
+  .nav-links a::after {
+    display: none;
+  }
 }
+
+/* ---------- Phone (<= 700px) ---------- */
+@media (max-width: 700px) {
+  .navbar {
+    --nav-h: 76px;
+  }
+  .navbar.scrolled {
+    --nav-h: 64px;
+  }
+  .nav-inner {
+    gap: 10px;
+  }
+  .nav-right {
+    gap: 10px;
+  }
+  .brand span {
+    font-size: 22px;
+  }
+  .nav-cta {
+    display: none;
+  }
+  .avatar-btn svg {
+    font-size: 36px;
+  }
+  .bell-panel {
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    width: auto;
+    max-height: calc(100vh - var(--nav-h) - 16px);
+    border-radius: 0 0 12px 12px;
+  }
+}
+
+/* ---------- Small phone (<= 420px) ---------- */
+@media (max-width: 420px) {
+  .navbar {
+    --nav-h: 68px;
+  }
+  .navbar.scrolled {
+    --nav-h: 60px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand span {
+    font-size: 19px;
+  }
+  .nav-right {
+    gap: 6px;
+  }
+  .avatar-btn svg {
+    font-size: 32px;
+  }
+  .bell > button {
+    font-size: 20px;
+  }
+}
+
+/* ---------- Very small (<= 340px): sirf logo ---------- */
+@media (max-width: 340px) {
+  .brand span {
+    display: none;
+  }
+}
+
 
 /* bell */
 .bell {
@@ -230,15 +449,6 @@ img {
   font-size: 12px;
   color: var(--muted);
 }
-@media (max-width: 600px) {
-  .bell-panel {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 64px;
-    width: auto;
-    border-radius: 0 0 12px 12px;
-  }
 }
 
 /* layout helpers */
@@ -660,24 +870,7 @@ select {
 }
 
 /* ===== logos / branding ===== */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  line-height: 1.1;
-}
-.brand span {
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--ink);
-}
-.brand small {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-}
+
 .footer-logos {
   display: flex;
   gap: 12px;
@@ -883,127 +1076,6 @@ select {
   border-radius: 8px;
 }
 
-/* =====================================================
-   BIG NAVBAR (logo clearly visible)
-   ===================================================== */
-:root {
-  --nav-h: 108px;
-}
-.navbar {
-  transition:
-    box-shadow 0.3s,
-    background 0.3s;
-}
-.navbar.scrolled {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-}
-.nav-inner {
-  height: var(--nav-h);
-  transition: height 0.3s;
-}
-.navbar.scrolled .nav-inner {
-  height: 76px;
-}
-.nav-logo {
-  height: 84px;
-  width: auto;
-  object-fit: contain;
-  transition: all 0.3s;
-}
-.navbar.scrolled .nav-logo {
-  height: 64px;
-}
-.brand {
-  gap: 14px;
-}
-.brand span {
-  font-size: 26px;
-  letter-spacing: -0.01em;
-}
-.brand small {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  margin-top: 2px;
-}
-.nav-links {
-  gap: 30px;
-}
-.nav-links a {
-  font-size: 17px;
-  font-weight: 600;
-  position: relative;
-  padding: 6px 0;
-}
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 0;
-  background: var(--brand);
-  border-radius: 3px;
-  transition: width 0.25s;
-}
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 100%;
-}
-.nav-cta {
-  padding: 12px 24px;
-  font-size: 16px;
-}
-.login-link {
-  font-weight: 700;
-  font-size: 16px;
-}
-.bell > button {
-  font-size: 24px;
-}
-@media (max-width: 1000px) {
-  .nav-links {
-    gap: 18px;
-  }
-  .brand small {
-    display: none;
-  }
-}
-@media (max-width: 860px) {
-  :root {
-    --nav-h: 80px;
-  }
-  .nav-logo {
-    height: 66px;
-  }
-  .navbar.scrolled .nav-logo {
-    height: 54px;
-  }
-  .brand span {
-    font-size: 22px;
-  }
-  .nav-cta {
-    display: none;
-  }
-  .nav-links {
-    top: var(--nav-h);
-    gap: 4px;
-    padding: 12px 20px 20px;
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.1);
-  }
-  .nav-links a {
-    font-size: 18px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-links a::after {
-    display: none;
-  }
-}
-@media (max-width: 860px) {
-  .bell-panel {
-    top: var(--nav-h);
-  }
-}
 
 /* =====================================================
    ANIMATIONS
