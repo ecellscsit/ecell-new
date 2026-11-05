@@ -6,7 +6,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import Logo from '../common/Logo.jsx';
 import { useSettings } from '../../context/SettingsContext.jsx';
 
-const PAGES = ['about', 'initiatives', 'events', 'team', 'startups', 'gallery', 'blog', 'contact'];
+const PAGES = ['about', 'events', 'team', 'startups', 'gallery', 'blog', 'contact'];
 
 const SOCIALS = [
   ['instagram', 'Instagram', InstagramIcon],
