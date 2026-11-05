@@ -470,18 +470,98 @@ select {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1.6fr 1fr 1.2fr 1.2fr;
+  gap: 28px;
+}
+.footer-grid > div {
+  min-width: 0; /* grid ke andar content bahar nahi nikalega */
 }
 .footer a {
   display: block;
   text-transform: capitalize;
   padding: 2px 0;
+  overflow-wrap: anywhere; /* lamba email/link wrap hoga */
 }
+.footer a[href^="mailto:"] {
+  text-transform: none; /* email capital nahi hoga */
+}
+.footer p {
+  overflow-wrap: anywhere;
+}
+
+/* footer: social icons */
+.footer .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.footer .social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  text-transform: none;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.footer .social-btn:hover {
+  background: var(--brand);
+  transform: translateY(-2px);
+}
+
+/* footer: useful links with favicon */
+.footer .useful-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+.footer .useful-link img {
+  border-radius: 4px;
+  background: #fff;
+  padding: 1px;
+  flex-shrink: 0;
+}
+
 .copy {
   text-align: center;
   font-size: 13px;
   margin-top: 24px;
+}
+
+/* footer: tablet */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-about {
+    grid-column: 1 / -1; /* About upar poori width mein */
+  }
+}
+
+/* footer: mobile */
+@media (max-width: 560px) {
+  .footer {
+    padding: 32px 0 16px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .footer .social-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .copy {
+    padding: 0 16px;
+  }
 }
 
 /* admin */
@@ -1568,20 +1648,4 @@ html {
   .nav-links a::after {
     display: none;
   }
-}
-
-
-
-/* Footer useful links with favicon */
-.footer .useful-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0;
-}
-.footer .useful-link img {
-  border-radius: 4px;
-  background: #fff;
-  padding: 1px;
-  flex-shrink: 0;
 }
