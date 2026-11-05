@@ -40,11 +40,17 @@ export default function NotificationBell() {
   }, []);
 
   const unread = items.filter((n) => !n.read).length;
+
   const markAll = async () => {
-    if (user) await http.post("/notifications/read-all");
-    else localStorage.setItem(LS_KEY, JSON.stringify(items.map((n) => n._id)));
-    setItems(items.map((n) => ({ ...n, read: true })));
+    try {
+      if (user) await http.post("/notifications/read-all");
+      else localStorage.setItem(LS_KEY, JSON.stringify(items.map((n) => n._id)));
+      setItems(items.map((n) => ({ ...n, read: true })));
+    } finally {
+      setOpen(false); // kaam hone ke baad panel band
+    }
   };
+
   const ago = (d) => {
     const m = Math.floor((Date.now() - new Date(d)) / 60000);
     return m < 60
