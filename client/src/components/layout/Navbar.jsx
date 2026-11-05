@@ -7,7 +7,6 @@ import NotificationBell from "../../modules/notifications/NotificationBell.jsx";
 
 const links = [
   ["About", "/about"],
-  ["Initiatives", "/initiatives"],
   ["Events", "/events"],
   ["Team", "/team"],
   ["Startups", "/startups"],
