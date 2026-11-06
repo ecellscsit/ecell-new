@@ -263,3 +263,29 @@ export const initiativesConfig = {
   ],
   defaults: { icon: "💡", order: 0 },
 };
+
+export const developersConfig = {
+  title: "Developers",
+  listUrl: "/developers",
+  saveUrl: "/developers",
+  columns: [
+    {
+      key: "photo",
+      label: "Photo",
+      render: (r) => (r.photo ? <img src={r.photo} alt='' className='thumb' /> : "—"),
+    },
+    { key: "name", label: "Name" },
+    { key: "role", label: "Role" },
+    { key: "order", label: "Order" },
+  ],
+  fields: [
+    { name: "name", label: "Name" },
+    { name: "photo", label: "Photo", type: "image" },
+    { name: "role", label: "Role (e.g. Full-stack Developer)" },
+    { name: "linkedin", label: "LinkedIn URL" },
+    { name: "github", label: "GitHub URL" },
+    { name: "website", label: "Portfolio / website URL" },
+    { name: "order", label: "Order (0 = pehle)", type: "number" },
+  ],
+  defaults: { order: 0 },
+};
