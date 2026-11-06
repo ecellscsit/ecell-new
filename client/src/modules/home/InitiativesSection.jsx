@@ -15,7 +15,7 @@ export default function InitiativesSection({ items = [] }) {
         Programs crafted to empower innovative thinkers and aspiring
         entrepreneurs.
       </p>
-      <div className='grid-3'>
+      <div className='grid-3 h-scroll'>
         {items.map((it, i) => (
           <Reveal key={it._id} delay={i * 100}>
             <InitiativeCard item={it} />
