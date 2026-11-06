@@ -9,6 +9,7 @@ const items = [
   ["Events", "/admin/events"],
   ["Blog", "/admin/blog"],
   ["Team", "/admin/team"],
+  ["Developers", "/admin/developers"],
   ["Gallery", "/admin/gallery"],
   ["Startups", "/admin/startups"],
   ["Members", "/admin/members"],
