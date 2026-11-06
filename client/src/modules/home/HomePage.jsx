@@ -51,14 +51,14 @@ export default function HomePage() {
 
       <section className="container section">
         <SectionHeader title="Events" to="/events" linkText="View all events" />
-        <div className="grid-3">{d.events.map((e, i) => <Reveal key={e._id} delay={i * 120}><EventCard event={e} /></Reveal>)}</div>
+        <div className="grid-3 h-scroll">{d.events.map((e, i) => <Reveal key={e._id} delay={i * 120}><EventCard event={e} /></Reveal>)}</div>
       </section>
 
       <Leadership president={d.president} vicePresident={d.vicePresident} tagline={s.tagline} />
 
       <section className="container section">
         <SectionHeader title="Startups" to="/startups" linkText="View all startups" />
-        <div className="grid-4">{d.startups.map((st, i) => <Reveal key={st._id} delay={i * 100}><StartupCard startup={st} /></Reveal>)}</div>
+        <div className="grid-4 h-scroll">{d.startups.map((st, i) => <Reveal key={st._id} delay={i * 100}><StartupCard startup={st} /></Reveal>)}</div>
       </section>
 
       <Testimonials items={s.testimonials} />
