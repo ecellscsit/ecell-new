@@ -6,7 +6,7 @@ export default function Testimonials({ items = [] }) {
   return (
     <section className="container section">
       <SectionHeader title="What participants say" />
-      <div className="grid-3">
+      <div className="grid-3 h-scroll">
         {items.map((t, i) => (
           <Reveal key={t.name} delay={i * 120}>
             <div className="card testimonial"><div className="card-body">
