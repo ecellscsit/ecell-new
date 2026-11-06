@@ -26,6 +26,7 @@ export default function AdminRoutes() {
       <Route path='events' element={<AdminCrud config={cfg.eventsConfig} />} />
       <Route path='blog' element={<AdminCrud config={cfg.blogConfig} />} />
       <Route path='team' element={<AdminCrud config={cfg.teamConfig} />} />
+      <Route path='developers' element={<AdminCrud config={cfg.developersConfig} />} />
       <Route path='gallery' element={<GalleryAdminPage />} />
       <Route path='about' element={<AboutEditorPage />} />
       <Route
@@ -35,7 +36,6 @@ export default function AdminRoutes() {
       <Route path='members' element={<MembersPage />} />
       <Route path='messages' element={<MessagesPage />} />
       <Route path='settings' element={<SettingsPage />} />
-      <Route path='developers' element={<AdminCrud config={cfg.developersConfig} />} />
     </>
   );
 }
