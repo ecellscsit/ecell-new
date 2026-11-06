@@ -7,7 +7,6 @@ const Person = ({ p }) => p && (
     <Img src={p.photo} alt={p.name} />
     <div className="card-body">
       <small>{p.role}</small><h3>{p.name}</h3>
-      {p.quote && <blockquote>“{p.quote}”</blockquote>}
       <div className="socials">
         {p.linkedin && <a href={p.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>}
         {p.instagram && <a href={p.instagram} target="_blank" rel="noreferrer">Instagram</a>}
@@ -23,7 +22,7 @@ export default function Leadership({ president, vicePresident, tagline }) {
     <section className="container section">
       <SectionHeader title="Leadership" to="/team" linkText="Meet the full team" />
       {tagline && <p className="tagline">{tagline}</p>}
-      <div className="grid-2">
+      <div className="leader-grid">
         <Reveal from="left"><Person p={president} /></Reveal>
         <Reveal from="right" delay={150}><Person p={vicePresident} /></Reveal>
       </div>
