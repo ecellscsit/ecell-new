@@ -2006,3 +2006,157 @@ html {
     font-size: 15px;
   }
 }
+
+
+/* =====================================================
+   HOME PAGE: responsive additions
+   ===================================================== */
+html,
+body {
+  overflow-x: clip; /* reveal animation se side-scroll na bane */
+}
+
+/* leadership: dono cards hamesha side by side */
+.leader-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+/* gallery section */
+.gallery-home .masonry-item {
+  cursor: default; /* home pe photo click nahi hoti */
+}
+.gallery-more {
+  margin-top: 28px;
+  text-align: center;
+}
+
+/* ---------- Tablet (<= 900px): leadership card ke andar image upar ---------- */
+@media (max-width: 900px) {
+  .leader {
+    flex-direction: column;
+  }
+  .leader img {
+    width: 100%;
+    height: 200px;
+    min-height: 0;
+  }
+  .leader .card-body {
+    text-align: center;
+  }
+  .leader .socials {
+    justify-content: center;
+  }
+}
+
+/* ---------- Phone / chhote devices (<= 700px) ---------- */
+@media (max-width: 700px) {
+  /* Initiatives, Events, Startups, Testimonials: side scroll */
+  .grid-3.h-scroll,
+  .grid-4.h-scroll {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: -4vw;
+    padding: 6px 4vw 16px;
+    scroll-padding-inline: 4vw;
+    scrollbar-width: none;
+  }
+  .h-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .h-scroll > * {
+    flex: 0 0 78%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+  .h-scroll > .reveal {
+    opacity: 1 !important; /* screen ke bahar wale cards chhupe na rahein */
+    transform: none !important;
+  }
+
+  /* leadership: chhote cards */
+  .leader-grid {
+    gap: 12px;
+  }
+  .leader img {
+    height: 160px;
+  }
+  .leader .card-body {
+    padding: 12px;
+  }
+  .leader h3 {
+    margin: 4px 0;
+    font-size: 16px;
+  }
+  .leader .socials {
+    gap: 8px;
+  }
+
+  /* baaki home sections */
+  .section {
+    padding: 32px 0;
+  }
+  .section-header {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+  }
+  .section-header h2 {
+    margin: 0;
+    font-size: 22px;
+  }
+  .hero {
+    padding: 40px 0 56px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+  .hero p {
+    font-size: 16px;
+  }
+  .hero .btn-lg {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  .hero-visual .hero-img {
+    height: 260px;
+  }
+  .hero-logos img {
+    height: 110px;
+  }
+  .marquee span {
+    font-size: 15px;
+  }
+  .marquee-track {
+    gap: 24px;
+  }
+  .stats-strip {
+    padding: 32px 0;
+  }
+  .about-snippet {
+    gap: 24px;
+  }
+  .hod-card {
+    padding: 20px;
+  }
+  .announce-date {
+    min-width: 0;
+  }
+  .cta-banner {
+    justify-content: center;
+    padding: 26px 20px;
+    border-radius: 18px;
+    text-align: center;
+  }
+  .cta-logo {
+    width: 64px;
+    height: 64px;
+  }
+  .partner-chip {
+    padding: 12px 22px;
+    font-size: 16px;
+  }
+}
