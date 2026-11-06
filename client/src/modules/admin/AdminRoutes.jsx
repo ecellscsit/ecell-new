@@ -35,6 +35,7 @@ export default function AdminRoutes() {
       <Route path='members' element={<MembersPage />} />
       <Route path='messages' element={<MessagesPage />} />
       <Route path='settings' element={<SettingsPage />} />
+      <Route path='developers' element={<AdminCrud config={cfg.developersConfig} />} />
     </>
   );
 }
