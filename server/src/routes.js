@@ -14,6 +14,7 @@ import contact from './modules/contact/contact.routes.js';
 import settings from './modules/settings/settings.routes.js';
 import home from './modules/home/home.routes.js';
 import upload from './modules/upload/upload.routes.js';
+import developers from './modules/developers/developers.routes.js';
 
 const r = Router();
 r.use('/auth', auth);
@@ -30,4 +31,5 @@ r.use('/contact', contact);
 r.use('/settings', settings);
 r.use('/home', home);
 r.use('/upload', upload);
+r.use('/developers', developers);  
 export default r;
