@@ -8,6 +8,7 @@ import PageHeader from '../../components/common/PageHeader.jsx';
 
 // President (level 1) and Vice President (level 2) are shown together under "Leadership"
 const LEVELS = { 0: 'Faculty Mentors', 1: 'Leadership', 3: 'Heads', 4: 'Team Leads', 5: 'Co-ordinators & Members' };
+const href = (u) => (/^https?:\/\//i.test(u) ? u : `https://${u}`);
 
 const Card = ({ m, big }) => (
   <div className={`team-card ${big ? 'big' : ''}`}>
@@ -15,7 +16,7 @@ const Card = ({ m, big }) => (
     <h4>{m.name}</h4>
     <p className="team-role">{m.role}</p>
     {m.department && <small className="team-dept">{m.department}</small>}
-    {(m.linkedin || m.instagram) && (
+     {(m.linkedin || m.instagram || m.portfolio) && (
       <div className="team-socials">
         {m.linkedin && (
           <a href={m.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
@@ -27,6 +28,13 @@ const Card = ({ m, big }) => (
             <InstagramIcon fontSize="small" />
           </a>
         )}
+        {m.portfolio && (
+          <a href={href(m.portfolio)} target="_blank" rel="noreferrer" aria-label="Portfolio website" title="Portfolio">
+            <LanguageIcon fontSize="small" />
+          </a>
+        )}
+      </div>
+    )}
       </div>
     )}
   </div>
