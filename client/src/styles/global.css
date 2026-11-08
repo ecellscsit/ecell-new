@@ -2160,3 +2160,235 @@ body {
     font-size: 16px;
   }
 }
+
+/* =====================================================
+   EVENT DETAIL PAGE
+   ===================================================== */
+.event-page {
+  padding-top: 28px;
+}
+.event-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  color: var(--brand);
+  font-weight: 600;
+}
+.event-head {
+  margin-bottom: 24px;
+}
+.event-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.event-head h1 {
+  margin: 0;
+  font-size: clamp(26px, 4.4vw, 42px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* layout: phone par info card upar, desktop pe right side sticky */
+.event-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+@media (min-width: 901px) {
+  .event-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 36px;
+  }
+  .event-main {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .event-side {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 110px;
+  }
+}
+
+/* info card */
+.event-info {
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+.event-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.event-info-row:first-child {
+  padding-top: 0;
+}
+.event-info-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: var(--brand);
+}
+.event-info-row small {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.event-info-row b {
+  display: block;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.event-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 18px;
+}
+.event-secondary {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
+}
+.event-note {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--soft);
+  color: var(--muted);
+  font-weight: 600;
+  text-align: center;
+}
+
+/* main content */
+.event-poster {
+  width: 100%;
+  max-height: 520px;
+  margin-bottom: 28px;
+  object-fit: contain;
+  background: var(--soft);
+  border-radius: 16px;
+}
+.event-section {
+  margin-bottom: 30px;
+}
+.event-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+.event-about {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #374151;
+  white-space: pre-line;
+}
+.event-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.event-list li {
+  position: relative;
+  padding: 12px 14px 12px 42px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.event-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  font-weight: 800;
+  color: var(--brand);
+}
+.event-list.prizes li::before {
+  content: "★";
+  color: #f59e0b;
+}
+.event-list.winners li::before {
+  content: "🏆";
+  left: 12px;
+}
+.event-schedule {
+  display: grid;
+  gap: 10px;
+}
+.event-slot {
+  display: flex;
+  gap: 16px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--brand);
+  border-radius: 12px;
+}
+.event-slot b {
+  min-width: 92px;
+  color: var(--brand-dark);
+}
+.event-speakers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.event-speaker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.event-speaker img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.event-speaker b,
+.event-speaker small {
+  display: block;
+}
+.event-speaker small {
+  color: var(--muted);
+}
+
+@media (max-width: 560px) {
+  .event-about {
+    font-size: 16px;
+  }
+  .event-slot {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .event-section h2 {
+    font-size: 20px;
+  }
+}
