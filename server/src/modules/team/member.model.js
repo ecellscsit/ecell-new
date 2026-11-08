@@ -12,6 +12,7 @@ const memberSchema = new mongoose.Schema({
   quote: String,
   linkedin: String,
   instagram: String,
+  portfolio: String,                  // personal portfolio website
   order: { type: Number, default: 0 },      // drag-to-reorder inside a level
 }, { timestamps: true });
 
