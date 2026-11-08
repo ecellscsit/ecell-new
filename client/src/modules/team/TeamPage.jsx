@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import LanguageIcon from '@mui/icons-material/Language';
 import http from '../../api/http.js';
 import Img from '../../components/common/Img.jsx';
 import PageHeader from '../../components/common/PageHeader.jsx';
