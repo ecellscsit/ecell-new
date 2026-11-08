@@ -1,6 +1,6 @@
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import LanguageIcon from '@mui/icons-material/Language';
+import WebsiteIcon from '../../components/common/WebsiteIcon.jsx';
 import Img from '../../components/common/Img.jsx';
 import Reveal from '../../components/common/Reveal.jsx';
 import SectionHeader from '../../components/common/SectionHeader.jsx';
@@ -27,7 +27,7 @@ const Person = ({ p }) => p && (
           )}
           {p.portfolio && (
             <a href={href(p.portfolio)} target="_blank" rel="noreferrer" aria-label="Portfolio website" title="Portfolio">
-              <LanguageIcon fontSize="small" />
+              <WebsiteIcon />
             </a>
           )}
         </div>
