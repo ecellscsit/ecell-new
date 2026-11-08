@@ -1,16 +1,37 @@
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LanguageIcon from '@mui/icons-material/Language';
 import Img from '../../components/common/Img.jsx';
 import Reveal from '../../components/common/Reveal.jsx';
 import SectionHeader from '../../components/common/SectionHeader.jsx';
+
+const href = (u) => (/^https?:\/\//i.test(u) ? u : `https://${u}`);
 
 const Person = ({ p }) => p && (
   <div className="leader card">
     <Img src={p.photo} alt={p.name} />
     <div className="card-body">
-      <small>{p.role}</small><h3>{p.name}</h3>
-      <div className="socials">
-        {p.linkedin && <a href={p.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>}
-        {p.instagram && <a href={p.instagram} target="_blank" rel="noreferrer">Instagram</a>}
-      </div>
+      <small>{p.role}</small>
+      <h3>{p.name}</h3>
+      {(p.linkedin || p.instagram || p.portfolio) && (
+        <div className="team-socials leader-socials">
+          {p.linkedin && (
+            <a href={p.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <LinkedInIcon fontSize="small" />
+            </a>
+          )}
+          {p.instagram && (
+            <a href={p.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+              <InstagramIcon fontSize="small" />
+            </a>
+          )}
+          {p.portfolio && (
+            <a href={href(p.portfolio)} target="_blank" rel="noreferrer" aria-label="Portfolio website" title="Portfolio">
+              <LanguageIcon fontSize="small" />
+            </a>
+          )}
+        </div>
+      )}
     </div>
   </div>
 );
