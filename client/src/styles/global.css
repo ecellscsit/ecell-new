@@ -2604,7 +2604,7 @@ body {
 .share-btn.fb:hover {
   background: #1877f2;
 }
-.share-btn.copy:hover,
+.share-btn.copylink:hover,
 .share-btn.native:hover {
   background: var(--brand);
 }
@@ -2624,6 +2624,17 @@ body {
   overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.post-author-logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  padding: 4px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 50%;
 }
 
 @media (max-width: 700px) {
