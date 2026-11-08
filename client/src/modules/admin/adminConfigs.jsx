@@ -130,6 +130,7 @@ export const teamConfig = {
     { name: "quote", label: "Quote" },
     { name: "linkedin", label: "LinkedIn URL" },
     { name: "instagram", label: "Instagram URL" },
+    { name: "portfolio", label: "Portfolio website URL" }, 
     { name: "order", label: "Order inside level", type: "number" },
   ],
   defaults: { level: 5, order: 0 },
