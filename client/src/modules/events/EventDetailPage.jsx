@@ -7,6 +7,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import WebsiteIcon from "../../components/common/WebsiteIcon.jsx";
 import { getEvent } from "./eventsApi.js";
 
 const day = (d) =>
@@ -111,8 +112,8 @@ export default function EventDetailPage() {
             {action}
             {isUrl(ev.externalLink) && (
               <a href={ev.externalLink} target='_blank' rel='noreferrer' className='btn btn-outline event-secondary'>
-                Visit event website →
-              </a>
+  <WebsiteIcon size={18} /> Visit event website
+</a>
             )}
           </div>
         </aside>
