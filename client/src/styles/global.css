@@ -2437,3 +2437,35 @@ body {
     font-size: 20px;
   }
 }
+
+/* =====================================================
+   WEBSITE ICON (Flaticon) + links
+   ===================================================== */
+.web-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  background-color: currentColor; /* parent ka rang le leta hai */
+  -webkit-mask: url("/images/website-icon.svg") center / contain no-repeat;
+  mask: url("/images/website-icon.svg") center / contain no-repeat;
+}
+.web-icon.original {
+  background: url("/images/website-icon.svg") center / contain no-repeat;
+  -webkit-mask: none;
+  mask: none;
+}
+.btn .web-icon {
+  margin-right: 8px;
+}
+.site-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--brand);
+  font-weight: 600;
+}
+.footer .copy a {
+  display: inline;
+  text-transform: none;
+  text-decoration: underline;
+}
