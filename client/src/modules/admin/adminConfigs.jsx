@@ -20,6 +20,11 @@ export const eventsConfig = {
     { key: "startDate", label: "Date", render: (r) => date(r.startDate) },
     { key: "status", label: "Status" },
     {
+      key: "registrationLink",
+      label: "Form link",
+      render: (r) => yesNo(r.registrationLink),
+    },
+    {
       key: "registrationOpen",
       label: "Reg open",
       render: (r) => yesNo(r.registrationOpen),
@@ -40,14 +45,19 @@ export const eventsConfig = {
     { name: "startDate", label: "Start", type: "datetime" },
     { name: "endDate", label: "End", type: "datetime" },
     { name: "venue", label: "Venue" },
+    { name: "registrationLink", label: "Registration link (Google Form URL)" },
     {
       name: "registrationDeadline",
-      label: "Registration deadline",
+      label: "Registration deadline (khali = event start tak)",
       type: "datetime",
     },
     { name: "rules", label: "Rules", type: "lines" },
     { name: "prizes", label: "Prizes", type: "lines" },
-    { name: "registrationOpen", label: "Registration open", type: "checkbox" },
+    {
+      name: "registrationOpen",
+      label: "Registration open (tick ho tabhi Register button dikhega)",
+      type: "checkbox",
+    },
     { name: "published", label: "Published", type: "checkbox" },
     { name: "externalLink", label: "Event website link (optional)" },
     {
@@ -63,20 +73,6 @@ export const eventsConfig = {
     },
   ],
   defaults: { published: true, registrationOpen: true, category: "General" },
-  rowActions: [
-    {
-      label: "CSV",
-      run: (r) =>
-        http
-          .get(`/registrations/event/${r._id}/csv`, { responseType: "blob" })
-          .then((res) => {
-            const a = document.createElement("a");
-            a.href = URL.createObjectURL(res.data);
-            a.download = `${r.slug}-registrations.csv`;
-            a.click();
-          }),
-    },
-  ],
 };
 
 export const blogConfig = {
