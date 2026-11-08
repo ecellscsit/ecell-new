@@ -18,6 +18,14 @@ const eventSchema = new mongoose.Schema({
   published: { type: Boolean, default: true },
   photos: [String],
   externalLink: String,          // e.g. separate event website
+    registrationLink: {
+    type: String,
+    trim: true,
+    validate: {
+      validator: (v) => !v || /^https?:\/\//i.test(v),
+      message: 'Registration link must start with http:// or https://',
+    },
+  },                              // Google Form link
   winners: [String],             // e.g. "1st (AI): Cosmic_coders0818"
 }, { timestamps: true, toJSON: { virtuals: true } });
 
