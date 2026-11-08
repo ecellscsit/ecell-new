@@ -1,15 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import http, { errMsg } from '../../api/http.js';
 import { useAuth } from '../../context/AuthContext.jsx';
-import { myRegistrations } from '../events/eventsApi.js';
 
 export default function ProfilePage() {
   const { user, setUser } = useAuth();
   const [f, setF] = useState({ name: user.name, phone: user.phone || '', course: user.course || '', year: user.year || '', prefs: user.prefs });
-  const [regs, setRegs] = useState([]);
   const [msg, setMsg] = useState('');
-  useEffect(() => { myRegistrations().then(setRegs); }, []);
 
   const pref = (k) => (e) => setF({ ...f, prefs: { ...f.prefs, [k]: e.target.checked } });
   const save = async (e) => {
@@ -31,8 +27,6 @@ export default function ProfilePage() {
         <label><input type="checkbox" checked={f.prefs.announcements} onChange={pref('announcements')} /> Announcements</label>
         <button className="btn btn-primary">Save</button>{msg && <p>{msg}</p>}
       </form>
-      <h3>My event registrations</h3>
-      <ul>{regs.map((r) => <li key={r._id}><Link to={`/events/${r.event.slug}`}>{r.event.title}</Link></li>)}</ul>
     </div>
   );
 }
