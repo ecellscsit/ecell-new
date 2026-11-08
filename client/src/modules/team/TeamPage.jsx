@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import LanguageIcon from '@mui/icons-material/Language';
+import WebsiteIcon from '../../components/common/WebsiteIcon.jsx';
 import http from '../../api/http.js';
 import Img from '../../components/common/Img.jsx';
 import PageHeader from '../../components/common/PageHeader.jsx';
@@ -30,7 +30,7 @@ const Card = ({ m, big }) => (
         )}
         {m.portfolio && (
           <a href={href(m.portfolio)} target="_blank" rel="noreferrer" aria-label="Portfolio website" title="Portfolio">
-            <LanguageIcon fontSize="small" />
+            <WebsiteIcon />
           </a>
         )}
       </div>
