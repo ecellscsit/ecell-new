@@ -90,7 +90,7 @@ export const blogConfig = {
     { name: "category", label: "Category" },
     { name: "author", label: "Author" },
     { name: "excerpt", label: "Short excerpt", type: "textarea" },
-    { name: "content", label: "Content", type: "textarea" },
+    { name: "content", label: "Content (blank line = naya paragraph, '## Heading' ya '1. Heading' = heading, '- ' = bullets)", type: "textarea" },
     {
       name: "published",
       label: "Publish now (untick = draft)",
