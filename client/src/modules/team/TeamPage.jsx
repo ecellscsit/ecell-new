@@ -35,8 +35,6 @@ const Card = ({ m, big }) => (
         )}
       </div>
     )}
-      </div>
-    )}
   </div>
 );
 
