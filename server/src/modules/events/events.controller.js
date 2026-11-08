@@ -18,7 +18,7 @@ export const listEvents = asyncH(async (req, res) => {
 });
 
 export const getEvent = asyncH(async (req, res) => {
-  const ev = await Event.findOne({ slug: req.params.slug });
+  const ev = await Event.findOne({ slug: req.params.slug, published: true });
   ev ? res.json(ev) : res.status(404).json({ message: 'Event not found' });
 });
 
