@@ -11,7 +11,15 @@ export const listPosts = asyncH(async (req, res) => {
 export const getPost = asyncH(async (req, res) => {
   const post = await Post.findOne({ slug: req.params.slug, published: true });
   if (!post) return res.status(404).json({ message: 'Post not found' });
-  const related = await Post.find({ category: post.category, _id: { $ne: post._id }, published: true }).select('title slug cover').limit(3);
+
+  const sel = 'title slug cover excerpt category publishedAt';
+  let related = await Post.find({ category: post.category, _id: { $ne: post._id }, published: true })
+    .select(sel).sort({ publishedAt: -1 }).limit(3);
+  if (related.length < 3) {
+    const more = await Post.find({ _id: { $nin: [post._id, ...related.map((r) => r._id)] }, published: true })
+      .select(sel).sort({ publishedAt: -1 }).limit(3 - related.length);
+    related = [...related, ...more];
+  }
   res.json({ post, related });
 });
 export const adminList = asyncH(async (req, res) => res.json(await Post.find().select('-content').sort({ createdAt: -1 })));
