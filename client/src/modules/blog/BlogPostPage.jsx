@@ -76,7 +76,7 @@ function ShareBar({ url, title, label }) {
           <Icon fontSize="small" />
         </a>
       ))}
-      <button type="button" className="share-btn copy" onClick={copy}
+      <button type="button" className="share-btn copylink" onClick={copy}
         aria-label="Copy link" title={copied ? 'Copied!' : 'Copy link'}>
         {copied ? <CheckIcon fontSize="small" /> : <LinkIcon fontSize="small" />}
       </button>
@@ -121,15 +121,18 @@ export default function BlogPostPage() {
         <h1>{post.title}</h1>
         {post.excerpt && <p className="post-lead">{post.excerpt}</p>}
 
-        <div className="post-meta-row">
+               <div className="post-meta-row">
           <div className="post-author">
-            <div className="avatar">{post.author?.[0] || 'E'}</div>
+            {/e-?cell/i.test(post.author || '') ? (
+              <img src="/images/ecell-logo.png" alt="E-Cell SCSIT" className="post-author-logo" />
+            ) : (
+              <div className="avatar">{post.author?.[0] || 'E'}</div>
+            )}
             <div>
               <b>{post.author}</b>
               <small>{fmt(post.publishedAt)} · {minutes} min read</small>
             </div>
           </div>
-          <ShareBar url={url} title={post.title} />
         </div>
 
         {post.cover && <img src={post.cover} alt="" className="post-cover" />}
