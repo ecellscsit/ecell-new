@@ -4,9 +4,10 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import XIcon from '@mui/icons-material/X';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import Logo from '../common/Logo.jsx';
+import WebsiteIcon from '../common/WebsiteIcon.jsx';
 import { useSettings } from '../../context/SettingsContext.jsx';
 
-const PAGES = ['about', 'events', 'team', 'startups', 'gallery', 'blog', 'contact'];
+const PAGES = ['about', 'initiatives', 'events', 'team', 'startups', 'gallery', 'blog', 'contact'];
 
 const SOCIALS = [
   ['instagram', 'Instagram', InstagramIcon],
@@ -16,12 +17,10 @@ const SOCIALS = [
 ];
 
 const USEFUL = [
-  ['DAVV', 'https://dauniv.ac.in', 'dauniv.ac.in'],
-  ['SCSIT website', 'https://scs.dauniv.ac.in', 'scs.dauniv.ac.in'],
-  ['Hackathon website', 'https://hackathon.ecellscsit.app', 'hackathon.ecellscsit.app'],
+  ['DAVV', 'https://dauniv.ac.in'],
+  ['SCSIT website', 'https://scs.dauniv.ac.in'],
+  ['Hackathon website', 'https://hackathon.ecellscsit.app'],
 ];
-
-const favicon = (domain) => `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
 
 export default function Footer() {
   const { settings: s } = useSettings();
@@ -71,22 +70,19 @@ export default function Footer() {
           </div>
 
           <h4 style={{ marginTop: 14 }}>Useful links</h4>
-          {USEFUL.map(([label, url, domain]) => (
+          {USEFUL.map(([label, url]) => (
             <a key={url} href={url} target="_blank" rel="noreferrer" className="useful-link">
-              <img
-                src={favicon(domain)}
-                alt=""
-                width="18"
-                height="18"
-                loading="lazy"
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
-              />
+              <WebsiteIcon size={18} />
               <span>{label}</span>
             </a>
           ))}
         </div>
       </div>
-      <p className="copy">© {new Date().getFullYear()} E-Cell SCSIT, DAVV Indore. All rights reserved.</p>
+
+      <p className="copy">
+        © {new Date().getFullYear()} E-Cell SCSIT, DAVV Indore. All rights reserved.
+        <br />
+      </p>
     </footer>
   );
 }
